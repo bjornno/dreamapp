@@ -1,0 +1,5 @@
+
+
+My "dreamapp"! It's a bundled executable jetty java webapplication. Run jetty in
+    four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver
+    as a war. The application is a spring web/REST application backed by in memory datasource.
