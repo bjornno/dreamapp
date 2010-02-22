@@ -6,7 +6,7 @@ git clone git://github.com/bjornno/dreamapp.git
 cd dreamapp
 mvn clean install
 cd to directory where you want to create your app
-mvn archetype:create -DarchetypeGroupId=bjornno.integration -DarchetypeArtifactId=integration-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<your group id> -DartifactId=<your artifact id>
+mvn archetype:create -DarchetypeGroupId=bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<your group id> -DartifactId=<your artifact id>
 cd <your artifact id>
 mvn clean install
 java -jar target/XXexecutable-war // or any of the other four ways you prefer..
