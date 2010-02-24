@@ -159,6 +159,9 @@
                         <phase>package</phase>
                     </execution>
                 </executions>
+                <configuration>
+                    <filename>${artifactId}-${version}}-executable.war</filename>
+                </configuration>
             </plugin>
 
             <plugin>
