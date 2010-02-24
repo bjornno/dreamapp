@@ -1,0 +1,1 @@
+insert into resources values (1, 'test')

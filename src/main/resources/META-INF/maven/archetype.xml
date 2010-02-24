@@ -1,13 +1,11 @@
 <archetype>
-    <id>batcharchetype</id>
+    <id>dreamappharchetype</id>
     <allowPartial>true</allowPartial>
     <sources>
         <source>src/main/java/controller/RestExampleController.java</source>
-        <source>src/main/java/server/JettyServer.java</source>
     </sources>
     <resources>
         <resource>src/main/resources/applicationContext.xml</resource>
-        <resource>src/main/resources/assembly.xml</resource>
         <resource>src/main/resources/db-provision.sql</resource>
         <resource>src/main/webapp/WEB-INF/web.xml</resource>
     </resources>

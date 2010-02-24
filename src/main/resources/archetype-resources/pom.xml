@@ -9,22 +9,6 @@
     <url></url>
     <dependencies>
         <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-plus</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-naming</artifactId>
-            <version>${jetty.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>org.springframework.asm</artifactId>
             <version>${spring.version}</version>
@@ -95,6 +79,26 @@
             <artifactId>commons-logging</artifactId>
             <version>1.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty</artifactId>
+            <version>${jetty.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-plus</artifactId>
+            <version>${jetty.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-naming</artifactId>
+            <version>${jetty.version}</version>
+            <scope>compile</scope>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <defaultGoal>clean deploy</defaultGoal>
@@ -158,25 +162,14 @@
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${version.maven.assembly.plugin}</version>
-                <configuration>
-                    <finalName>server</finalName>
-                    <descriptor>src/main/resources/assembly.xml</descriptor>
-                    <archive>
-                        <manifest>
-                            <mainClass>${groupId}.server.JettyServer</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <groupId>net.sf.alchim</groupId>
+                <artifactId>winstone-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- append to the packaging phase. -->
                         <goals>
-                            <goal>single</goal> <!-- goals == mojos -->
+                            <goal>embed</goal>
                         </goals>
+                        <phase>package</phase>
                     </execution>
                 </executions>
             </plugin>
