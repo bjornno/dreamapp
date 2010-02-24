@@ -1,6 +1,5 @@
-package $
+package {groupId}.controller;
 
-import {groupId}.controller;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mortbay.jetty.Server;
