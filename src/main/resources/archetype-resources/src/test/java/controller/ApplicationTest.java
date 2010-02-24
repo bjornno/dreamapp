@@ -1,10 +1,11 @@
-package {groupId}.controller;
+package ${groupId}.controller;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.mortbay.jetty.Server;
 import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
+import java.util.Map;
 
 import java.net.URI;
 
