@@ -1,7 +1,7 @@
 
 drop table if exists resources;
 
-create table recources (
+create table resources (
   id identity,
   text varchar
 );
