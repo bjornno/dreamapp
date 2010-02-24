@@ -85,19 +85,6 @@
             <version>${jetty.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-plus</artifactId>
-            <version>${jetty.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-naming</artifactId>
-            <version>${jetty.version}</version>
-            <scope>compile</scope>
-            <scope>test</scope>
-        </dependency>
 
     </dependencies>
     <build>
