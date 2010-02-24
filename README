@@ -1,4 +1,4 @@
-My "dreamapp"! Maven archetype that creates a bundled executable winstone java webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a spring web/REST application backed by in memory datasource.
+My "dreamapp"! Maven archetype that creates a bundled executable winstone java webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a spring web/REST application backed by in memory datasource. It will soon be extended with a repository layer, ssl (two way client-server auth), and some configuration for setting up different datasource etc
 
 Heres how to create your "dreamapp":
 
