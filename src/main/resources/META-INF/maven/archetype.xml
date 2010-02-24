@@ -7,6 +7,7 @@
     <resources>
         <resource>src/main/resources/applicationContext.xml</resource>
         <resource>src/main/resources/db-provision.sql</resource>
+        <resource>src/main/resources/db-testdata.sql</resource>
         <resource>src/main/webapp/WEB-INF/web.xml</resource>
     </resources>
    <testSources><source>src/test/java/controller/ApplicationTest.java</source></testSources>

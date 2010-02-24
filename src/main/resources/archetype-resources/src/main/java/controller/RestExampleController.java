@@ -2,7 +2,7 @@ package ${groupId}.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.MultiValueMap;
@@ -14,18 +14,18 @@ import javax.sql.DataSource;
 @RequestMapping("/resource")
 @Transactional
 public class RestExampleController {
-    private SimpleJdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Required
     @Autowired
     public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)    
     @Transactional
     public String postResource(String text) {
-        jdbcTemplate.update("insert into resources(text) values('" + text +"')");
+        jdbcTemplate.execute("insert into resources(text) values('" + text +"')");
         int id = jdbcTemplate.queryForInt("select id from resources where text = '" + text + "'");
         return "redirect:" + id;
     }
