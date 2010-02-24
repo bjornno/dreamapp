@@ -25,7 +25,7 @@ public class RestExampleController {
     @RequestMapping(value = "/", method = RequestMethod.POST)    
     @Transactional
     public String postResource(String text) {
-        jdbcTemplate.execute("insert into resources(text) values('" + text +"')");
+        jdbcTemplate.update("insert into resources(text) values('" + text +"')");
         int id = jdbcTemplate.queryForInt("select id from resources where text = '" + text + "'");
         return "redirect:" + id;
     }
