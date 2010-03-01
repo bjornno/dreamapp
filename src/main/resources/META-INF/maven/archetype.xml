@@ -3,14 +3,28 @@
     <allowPartial>true</allowPartial>
     <sources>
         <source>src/main/java/controller/RestExampleController.java</source>
+        <source>src/main/java/controller/RestExampleController.java</source>
     </sources>
     <resources>
         <resource>src/main/resources/applicationContext.xml</resource>
-        <resource>src/main/resources/db-provision.sql</resource>
-        <resource>src/main/resources/db-testdata.sql</resource>
+        <resource>src/main/resources/application.properties</resource>
+        <resource>src/main/resources/db/migrations-001.sql</resource>
+        <resource>src/main/resources/db/testdata.sql</resource>
         <resource>src/main/webapp/WEB-INF/web.xml</resource>
     </resources>
-   <testSources><source>src/test/java/controller/ApplicationTest.java</source></testSources>
-  <!-- <testResources><source>src/test/resources</source></testResources>
-   <siteResources><source>src/site</source></siteResources> -->
+   <testSources>
+       <source>src/test/java/ApplicationLauncher.java</source>
+       <source>src/test/java/controller/ApplicationTest.java</source>
+   </testSources>
+   <testResources>
+       <source>src/test/resources/client.cer</source>
+       <source>src/test/resources/client.keystore.jks</source>
+       <source>src/test/resources/client.keystore.p12</source>
+       <source>src/test/resources/client.truststore.jks</source>
+       <source>src/test/resources/createTestKeys.sh</source>
+       <source>src/test/resources/server.cer</source>
+       <source>src/test/resources/server.keystore.jks</source>
+       <source>src/test/resources/server.truststore.jks</source>
+   </testResources>
+   <!--<siteResources><source>src/site</source></siteResources> -->
 </archetype>
