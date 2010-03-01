@@ -8,6 +8,7 @@ public class ApplicationLauncher {
 
     // starts server with plain connection or ssl connection on port 8080, default is
     // SSL connection.
+    // Run createTestKeys.sh if you want ssl.
     public static void main(String[] args) {
         Server server = new Server();
         if (args.length > 1 && "noSSL".equals(args[1])) {

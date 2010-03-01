@@ -18,7 +18,7 @@ import java.util.Map;
 import java.net.URI;
 
 public class ApplicationTest {
-     @Test
+    @Test
     public void testGet() throws Exception {
         int port = startJetty();
         RestTemplate restTemplate = new RestTemplate();
@@ -32,10 +32,10 @@ public class ApplicationTest {
         Map map = new HashMap();
         map.put("text", "hello");
         URI loc = restTemplate.postForLocation("http://localhost:"+port+"/resource/", null, map);
-  //      Assert.assertEquals("hello", restTemplate.getForObject(loc, String.class));
+        //      Assert.assertEquals("hello", restTemplate.getForObject(loc, String.class));
     }
 
-    @Test
+    //@Test // run createTestKeys.sh in test resources before enabling this test
     public void testWithSSLServerAndClient() throws Exception {
         int port = startJettyWithSSL();
         RestTemplate restTemplate = new RestTemplate();
@@ -51,7 +51,7 @@ public class ApplicationTest {
         return server.getConnectors()[0].getLocalPort();
     }
 
-        public int startJettyWithSSL() throws Exception {
+    public int startJettyWithSSL() throws Exception {
         Server server = new org.mortbay.jetty.Server(0);
 
         SslSocketConnector sslConnector = new SslSocketConnector();
@@ -71,7 +71,7 @@ public class ApplicationTest {
         return 8181;
     }
 
-     private  void setSSLContextForClient() throws Exception {
+    private  void setSSLContextForClient() throws Exception {
         String keystoreType = "JKS";
         InputStream keystoreLocation = new FileInputStream("src/test/resources/client.keystore.jks");
         char [] keystorePassword = "123456".toCharArray();
