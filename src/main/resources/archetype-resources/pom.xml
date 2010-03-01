@@ -160,7 +160,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <filename>${artifactId}-${version}}-executable.war</filename>
+                    <filename>${artifactId}-${version}-executable.jar</filename>
                 </configuration>
             </plugin>
 
