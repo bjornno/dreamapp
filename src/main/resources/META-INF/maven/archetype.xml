@@ -17,14 +17,14 @@
        <source>src/test/java/controller/ApplicationTest.java</source>
    </testSources>
    <testResources>
-       <source>src/test/resources/client.cer</source>
-       <source>src/test/resources/client.keystore.jks</source>
-       <source>src/test/resources/client.keystore.p12</source>
-       <source>src/test/resources/client.truststore.jks</source>
-       <source>src/test/resources/createTestKeys.sh</source>
-       <source>src/test/resources/server.cer</source>
-       <source>src/test/resources/server.keystore.jks</source>
-       <source>src/test/resources/server.truststore.jks</source>
+       <resource>src/test/resources/client.cer</resource>
+       <resource>src/test/resources/client.keystore.jks</resource>
+       <resource>src/test/resources/client.keystore.p12</resource>
+       <resource>src/test/resources/client.truststore.jks</resource>
+       <resource>src/test/resources/createTestKeys.sh</resource>
+       <resource>src/test/resources/server.cer</resource>
+       <resource>src/test/resources/server.keystore.jks</resource>
+       <resource>src/test/resources/server.truststore.jks</resource>
    </testResources>
    <!--<siteResources><source>src/site</source></siteResources> -->
 </archetype>
