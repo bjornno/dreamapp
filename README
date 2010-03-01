@@ -9,6 +9,6 @@ cd to directory where you want to create your app
 mvn archetype:create -DarchetypeGroupId=bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<your group id> -DartifactId=<your artifact id>
 cd <your artifact id>
 mvn clean install
-java -jar target/<your artifact id>.<version>-standalone.jar // or any of the other four ways you prefer..
+java -jar target/<your artifact id>.<version>-executable.jar // or any of the other four ways you prefer..
 
 Voila, and see your rest resource at http://localhost:8080/resource/1
