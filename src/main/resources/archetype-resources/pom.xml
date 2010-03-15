@@ -85,7 +85,31 @@
             <version>${jetty.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-sql</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.3.0</version>
+        </dependency>
     </dependencies>
     <build>
         <defaultGoal>clean deploy</defaultGoal>
@@ -210,7 +234,7 @@
         <version.maven.release.plugin>2.0-beta-7</version.maven.release.plugin>
         <version.maven.deploy.plugin>2.4</version.maven.deploy.plugin>
         <jetty.version>6.1.22</jetty.version>
-        <spring-integration.version>1.0.3.RELEASE</spring-integration.version>
+        <camel-version>2.2.0</camel-version>
     </properties>
 
     <!--
