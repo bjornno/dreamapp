@@ -1,5 +1,7 @@
 package ${groupId}.controller;
 
+import java.util.UUID;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,8 +15,19 @@ import javax.sql.DataSource;
 @Controller
 @RequestMapping("/resource")
 @Transactional
-public class RestExampleController {
+public class RestController {
     private JdbcTemplate jdbcTemplate;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @ResponseBody
+    public String getAllResourceIds() {
+        List<String> allIds = jdbcTemplate.queryForList("select id from resources", String.class);
+        String result = "";
+        for (int i = 0; i < allIds.size(); i++) {
+            result += allIds.get(i) +"\n";
+        }
+        return result;
+    }
 
     @Required
     @Autowired
@@ -25,14 +38,14 @@ public class RestExampleController {
     @RequestMapping(value = "/", method = RequestMethod.POST)    
     @Transactional
     public String postResource(String text) {
-        jdbcTemplate.execute("insert into resources(text) values('" + text +"')");
-        int id = jdbcTemplate.queryForInt("select id from resources where text = '" + text + "'");
+        String id = UUID.randomUUID().toString();
+        jdbcTemplate.execute("insert into resources(id, text) values('" + id + "', '" + text +"')");
         return "redirect:" + id;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String getResource(final @PathVariable String id) {
-        return jdbcTemplate.queryForObject("select text from resources where id = " + id, String.class);
+        return jdbcTemplate.queryForObject("select text from resources where id = '" + id + "'", String.class);
     }
 }

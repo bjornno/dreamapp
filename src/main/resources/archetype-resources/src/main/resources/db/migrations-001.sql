@@ -2,8 +2,9 @@
 drop table if exists resources;
 
 create table resources (
-  id identity,
-  text varchar
+  id varchar,
+  text varchar,
+  status integer default 0
 );
 
 

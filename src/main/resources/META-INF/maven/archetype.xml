@@ -2,11 +2,12 @@
     <id>dreamappharchetype</id>
     <allowPartial>true</allowPartial>
     <sources>
-        <source>src/main/java/controller/RestExampleController.java</source>
-        <source>src/main/java/controller/RestExampleController.java</source>
+        <source>src/main/java/controller/RestController.java</source>
+        <source>src/main/java/integration/RouteConfig.java</source>
+        <source>src/main/java/process/PomProcessor.java</source>
     </sources>
     <resources>
-        <resource>src/main/resources/applicationContext.xml</resource>
+        <resource>src/main/resources/META-INF/spring/applicationContext.xml</resource>
         <resource>src/main/resources/application.properties</resource>
         <resource>src/main/resources/db/migrations-001.sql</resource>
         <resource>src/main/resources/db/testdata.sql</resource>
@@ -14,7 +15,8 @@
     </resources>
    <testSources>
        <source>src/test/java/ApplicationLauncher.java</source>
-       <source>src/test/java/controller/ApplicationTest.java</source>
+       <source>src/test/java/controller/RestControllerTest.java</source>
+       <source>src/test/java/integration/RouteConfigTest.java</source>
    </testSources>
    <testResources>
        <resource>src/test/resources/createTestKeys.sh</resource>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <value>classpath:application.properties</value>
+        </property>
+    </bean>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+    <jdbc:initialize-database data-source="dataSource" enabled="true">
+        <jdbc:script location="classpath:db/migrations-*.sql"/>
+        <jdbc:script location="classpath:db/testdata.sql"/>
+    </jdbc:initialize-database>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager" />
+    <context:component-scan base-package="${groupId}.controller"/>
+     <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="txManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+    </bean>
+
+    <bean id="PROPAGATION_REQUIRES_NEW" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="txManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
+    </bean>
+
+    <bean id="sql" class="org.apache.camel.component.sql.SqlComponent">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
+        <package>${groupId}.integration</package>
+    </camelContext>
+    <bean name="jms" class="org.apache.camel.component.jms.JmsComponent">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="vm://localhost" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="pomProcessor" class="${groupId}.process.PomProcessor"/>
+</beans>

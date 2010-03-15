@@ -1,1 +1,1 @@
-insert into resources values (1, 'test')
+insert into resources values ('1', 'test', 0)

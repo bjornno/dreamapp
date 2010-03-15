@@ -17,7 +17,7 @@ import java.util.Map;
 
 import java.net.URI;
 
-public class ApplicationTest {
+public class RestControllerTest {
     @Test
     public void testGet() throws Exception {
         int port = startJetty();
