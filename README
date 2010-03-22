@@ -3,8 +3,6 @@ My "dreamapp"! Maven archetype that creates a bundled executable winstone java w
 Here is how to create your "dreamapp":
 
 mvn archetype:create -DarchetypeGroupId=com.github.bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<groupId> -DartifactId=<artifactId> -DremoteRepositories=http://oss.sonatype.org/content/groups/public
-cd <artifactId>
-mvn clean install
-java -jar target/<artifactId>.<version>-executable.jar // or any of the other four ways you prefer..
-
-Voila, and see your test resource at http://localhost:8080/resource/1
+open your new project in your favorite IDE and start ApplicationLauncher with noSSL argument.
+Voila, and see your resources at http://localhost:8080/resource/
+Try copy the pom.xml file and drop it in target/data/in and see what happens, check out http://localhost:8080/resource/ again. 
