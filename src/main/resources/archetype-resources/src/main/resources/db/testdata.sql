@@ -1,1 +1,1 @@
-insert into resources values ('1', 'test', 0)
+insert into resources (id, text, status) values ('1', 'test', 0)
