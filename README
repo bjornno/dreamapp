@@ -1,14 +1,10 @@
-My "dreamapp"! Maven archetype that creates a bundled executable winstone java webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a spring web/REST application backed by in memory datasource with SSL server and client authentication (certificates) support. It will soon be extended with a repository layer, and some configuration for setting up different datasource etc.
+My "dreamapp"! Maven archetype that creates a bundled executable winstone java webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a batch process application based on Camel and with a REST interface backed by in memory datasource with SSL server and client authentication (certificates) support. It will soon be extended with a repository layer, and some configuration for setting up different datasource etc.
 
-Heres how to create your "dreamapp":
+Here is how to create your "dreamapp":
 
-git clone git://github.com/bjornno/dreamapp.git
-cd dreamapp
+mvn archetype:create -DarchetypeGroupId=com.github.bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<groupId> -DartifactId=<artifactId> -DremoteRepositories=http://oss.sonatype.org/content/groups/public
+cd <artifactId>
 mvn clean install
-cd to directory where you want to create your app
-mvn archetype:create -DarchetypeGroupId=bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<your group id> -DartifactId=<your artifact id>
-cd <your artifact id>
-mvn clean install
-java -jar target/<your artifact id>.<version>-executable.jar // or any of the other four ways you prefer..
+java -jar target/<artifactId>.<version>-executable.jar // or any of the other four ways you prefer..
 
-Voila, and see your rest resource at http://localhost:8080/resource/1
+Voila, and see your test resource at http://localhost:8080/resource/1
