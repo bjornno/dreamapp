@@ -4,7 +4,6 @@
     <sources>
         <source>src/main/java/controller/RestController.java</source>
         <source>src/main/java/integration/RouteConfig.java</source>
-        <source>src/main/java/process/PomProcessor.java</source>
     </sources>
     <resources>
         <resource>src/main/resources/META-INF/spring/applicationContext.xml</resource>

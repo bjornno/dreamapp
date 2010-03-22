@@ -40,18 +40,15 @@
         <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
     </bean>
 
-    <bean id="sql" class="org.apache.camel.component.sql.SqlComponent">
+    <bean id="dbfile" class="com.github.bjornno.dbfile.DBFileComponent">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <bean id="dbwork" class="com.github.bjornno.dbwork.DBWorkComponent">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
     <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
         <package>${groupId}.integration</package>
     </camelContext>
-    <bean name="jms" class="org.apache.camel.component.jms.JmsComponent">
-        <property name="connectionFactory">
-            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
-                <property name="brokerURL" value="vm://localhost" />
-            </bean>
-        </property>
-    </bean>
-    <bean id="pomProcessor" class="${groupId}.process.PomProcessor"/>
 </beans>
