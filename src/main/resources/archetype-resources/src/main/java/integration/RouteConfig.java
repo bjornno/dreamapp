@@ -13,7 +13,7 @@ public class RouteConfig extends SpringRouteBuilder {
     public void configure() throws Exception {
         SpringTransactionPolicy requirenew = lookup("PROPAGATION_REQUIRES_NEW", SpringTransactionPolicy.class);
 
-        from("file:target/data/in?delay=5000&preMove=inprogress&move=done/${date:now:yyyyMMdd}/${file:name}&moveFailed=/error/${date:now:yyyyMMdd}/${file:name}")
+        from("file:target/data/in?delay=5000&preMove=inprogress&move=done&moveFailed=error")
                 .convertBodyTo(String.class)     // use .streaming() instead
                 .policy(requirenew)
                 .to("dbfile:resources")          // stream to blob

@@ -268,20 +268,5 @@
         </plugins>
     </reporting>
 
-      <scm>
-        <connection>scm:git@github.com:bjornno/dreamapp.git</connection>
-    </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>oss-sonatype-snapshots</id>
-            <name>Repository for snapshot versions of JARs</name>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>oss-sonatype-releases</id>
-            <name>Repository for release versions of JARs</name>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-    </distributionManagement>
+    
 </project>
