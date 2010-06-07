@@ -1,9 +1,12 @@
-My "dreamapp"! Maven archetype that creates a bundled executable winstone java webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a batch process application based on Camel and with a REST interface backed by in memory datasource with SSL server and client authentication (certificates) support. It will soon be extended with a repository layer, and some configuration for setting up different datasource etc.
+My "dreamapp"! Maven archetype that creates a bundled executable java jetty webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a simple REST interface backed by in memory datasource with SSL server and client authentication (certificates) support. It will soon be extended some configuration support for setting up different datasource etc.
 
 Here is how to create your "dreamapp":
 
 mvn archetype:create -DarchetypeGroupId=com.github.bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<groupId> -DartifactId=<artifactId> -DremoteRepositories=http://oss.sonatype.org/content/groups/public
 
 Open your new project in your favorite IDE and start src/test/ApplicationLauncher.
-Voila, and see your resources at http://localhost:8080/resource/
-Try copy the pom.xml file and drop it in target/data/in and see what happens, check out http://localhost:8080/resource/ again. 
+Voila, and see your welcomepage at http://localhost:8080/
+
+I included a small rest service wich can be viewed at
+http://localhost:8080/rest/resource/
+ 
