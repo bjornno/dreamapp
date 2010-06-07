@@ -3,6 +3,7 @@
     <allowPartial>true</allowPartial>
     <sources>
         <source>src/main/java/controller/RestController.java</source>
+        <source>src/main/java/Start.java</source>
     </sources>
     <resources>
         <resource>src/main/resources/META-INF/spring/applicationContext.xml</resource>
