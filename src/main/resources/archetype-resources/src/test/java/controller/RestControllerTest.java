@@ -22,7 +22,7 @@ public class RestControllerTest {
     public void testGet() throws Exception {
         int port = startJetty();
         RestTemplate restTemplate = new RestTemplate();
-        Assert.assertEquals("test", restTemplate.getForObject("http://localhost:"+port+"/resource/1", String.class));
+        Assert.assertEquals("test", restTemplate.getForObject("http://localhost:"+port+"/rest/resource/1", String.class));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class RestControllerTest {
         RestTemplate restTemplate = new RestTemplate();
         Map map = new HashMap();
         map.put("text", "hello");
-        URI loc = restTemplate.postForLocation("http://localhost:"+port+"/resource/", null, map);
+        URI loc = restTemplate.postForLocation("http://localhost:"+port+"/rest/resource/", null, map);
         //      Assert.assertEquals("hello", restTemplate.getForObject(loc, String.class));
     }
 
@@ -40,7 +40,7 @@ public class RestControllerTest {
         int port = startJettyWithSSL();
         RestTemplate restTemplate = new RestTemplate();
         setSSLContextForClient();
-        Assert.assertEquals("test", restTemplate.getForObject("https://localhost:"+port+"/resource/1", String.class));
+        Assert.assertEquals("test", restTemplate.getForObject("https://localhost:"+port+"/rest/resource/1", String.class));
     }
 
     private int startJetty() throws Exception {

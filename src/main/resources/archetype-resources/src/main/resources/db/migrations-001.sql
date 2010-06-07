@@ -8,12 +8,4 @@ create table resources (
   status integer default 0
 );
 
-drop table if exists dbwork;
-
-create table dbwork (
-  id varchar,
-  workid varchar,
-  queuename varchar,
-  status integer default 0
-);
 

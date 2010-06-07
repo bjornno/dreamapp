@@ -3,7 +3,6 @@
     <allowPartial>true</allowPartial>
     <sources>
         <source>src/main/java/controller/RestController.java</source>
-        <source>src/main/java/integration/RouteConfig.java</source>
     </sources>
     <resources>
         <resource>src/main/resources/META-INF/spring/applicationContext.xml</resource>
@@ -15,7 +14,6 @@
    <testSources>
        <source>src/test/java/ApplicationLauncher.java</source>
        <source>src/test/java/controller/RestControllerTest.java</source>
-       <source>src/test/java/integration/RouteConfigTest.java</source>
    </testSources>
    <testResources>
        <resource>src/test/resources/createTestKeys.sh</resource>
