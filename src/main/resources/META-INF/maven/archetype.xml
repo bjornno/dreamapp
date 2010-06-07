@@ -11,6 +11,7 @@
         <resource>src/main/resources/db/migrations-001.sql</resource>
         <resource>src/main/resources/db/testdata.sql</resource>
         <resource>src/main/webapp/WEB-INF/web.xml</resource>
+        <resource>src/main/webapp/index.html</resource>
     </resources>
    <testSources>
        <source>src/test/java/ApplicationLauncher.java</source>
@@ -19,5 +20,4 @@
    <testResources>
        <resource>src/test/resources/createTestKeys.sh</resource>
    </testResources>
-   <!--<siteResources><source>src/site</source></siteResources> -->
 </archetype>
