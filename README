@@ -1,11 +1,23 @@
-My "dreamapp"! Maven archetype that creates a bundled executable java jetty webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a simple REST interface backed by in memory datasource with SSL server and client authentication (certificates) support. It will soon be extended some configuration support for setting up different datasource etc.
+My "dreamapp"! Maven archetype that creates a bundled executable java jetty webapplication. Run the application in four ways, as a maven jetty:run, as unit test in your IDE, as executable war or inside a appserver as a war. The application is a simple REST interface backed by hsql flatfile datasource with SSL server and client authentication (certificates) support. 
 
 Here is how to create your "dreamapp":
 
 mvn archetype:create -DarchetypeGroupId=com.github.bjornno -DarchetypeArtifactId=dreamapp -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=<groupId> -DartifactId=<artifactId> -DremoteRepositories=http://oss.sonatype.org/content/groups/public
 
-Open your new project in your favorite IDE and start src/test/ApplicationLauncher.
+mvn clean install
+java -jar target/<artifactId>.war
+
 Voila, and see your welcomepage at http://localhost:8080/
+
+In the same directory as the war file you will see a application.properties file,
+this is one place to put your configuration (included in spring context). Another place
+is in application_properties table in the database.
+The recomendation is to put database configuration and server configuration (portnumber etc) in the application.properties file, and everything else in the database.
+
+Or you can open your new project in your favorite IDE and start src/test/ApplicationLauncher.
+Or:
+mvn jetty:run
+Or deploy in your favorite application server.
 
 I included a small rest service wich can be viewed at
 http://localhost:8080/rest/resource/
