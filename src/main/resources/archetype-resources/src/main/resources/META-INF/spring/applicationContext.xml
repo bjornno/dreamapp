@@ -9,20 +9,41 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <value>classpath:application.properties</value>
-        </property>
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="resourceRef" value="true"/>
+        <property name="jndiName" value="jdbc/Ds"/>
     </bean>
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${jdbc.driver}" />
-        <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.username}" />
-        <property name="password" value="${jdbc.password}" />
-    </bean>
+
     <jdbc:initialize-database data-source="dataSource" enabled="true">
         <jdbc:script location="classpath:db/migrations-*.sql"/>
         <jdbc:script location="classpath:db/testdata.sql"/>
     </jdbc:initialize-database>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="localOverride" value="true"/>
+
+        <property name="properties">
+            <bean class="org.apache.commons.configuration.ConfigurationConverter" factory-method="getProperties">
+                <constructor-arg>
+                    <bean class="org.apache.commons.configuration.DatabaseConfiguration">
+                        <constructor-arg ref="dataSource"/>
+                        <constructor-arg>
+                            <value>application_properties</value>
+                        </constructor-arg>
+                        <constructor-arg>
+                            <value>key</value>
+                        </constructor-arg>
+                        <constructor-arg>
+                            <value>value</value>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
+        <property name="location" value="file:application.properties"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+
     <context:component-scan base-package="${groupId}.controller"/>
 </beans>

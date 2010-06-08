@@ -1,11 +1,19 @@
+package ${groupId};
+
+import org.apache.commons.dbcp.BasicDataSource;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.bio.SocketConnector;
+import org.mortbay.jetty.plus.naming.EnvEntry;
 import org.mortbay.jetty.webapp.WebAppContext;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.security.ProtectionDomain;
+import java.util.Properties;
 
 
 /**
@@ -18,11 +26,19 @@ import java.security.ProtectionDomain;
 public class Start {
 
     private static final String WEBAPPLICATION_CONTEXT_NAME = "/";
-    
+
     public static void main(String[] args) throws Exception {
+        BasicDataSource dataSource = new BasicDataSource();
+        Properties properties = loadProperties();
+        dataSource.setDriverClassName(properties.getProperty("jdbc.driver"));
+//        dataSource.setUrl("jdbc:hsqldb:mem:rest");
+        dataSource.setUrl(properties.getProperty("jdbc.url"));
+          dataSource.setPassword(properties.getProperty("jdbc.password"));
+        dataSource.setUsername(properties.getProperty("jdbc.username"));
+        new EnvEntry("jdbc/Ds", dataSource);
         Server server = new Server();
         Connector defaultConnector = new SocketConnector();
-        defaultConnector.setPort(8080);
+        defaultConnector.setPort(Integer.parseInt((String)properties.get("server.port")));
         server.setConnectors(new Connector[] { defaultConnector });
         server.addHandler(createWebappContextHandler());
         try {
@@ -31,6 +47,8 @@ public class Start {
             System.exit(-1);
         }
     }
+
+
 
 
     private static Handler createWebappContextHandler() {
@@ -46,24 +64,22 @@ public class Start {
         context.setWar(location.toExternalForm());
     }
 
-}
-/*
-public class Start {
-
-    public static void main(String[] args) {
-        Server server = new Server();
-            Connector defaultConnector = new SocketConnector();
-            defaultConnector.setPort(8080);
-            server.setConnectors(new Connector[] { defaultConnector });
-        server.addHandler(
-                new org.mortbay.jetty.webapp.WebAppContext("src/main/webapp", "/"));
+    private static Properties loadProperties() {
+        Properties properties = new Properties();
         try {
-            server.start();
-        } catch (Exception e) {
-            System.exit(-1);
+            properties.load(new FileInputStream("application.properties"));
+        } catch (IOException e) {
+            properties.put("server.port", "8080");
+            properties.put("jdbc.driver", "org.hsqldb.jdbcDriver");
+            properties.put("jdbc.url", "jdbc:hsqldb:file:database");
+            properties.put("jdbc.username", "sa");
+            properties.put("jdbc.password", "");
+            try {
+                properties.store(new FileOutputStream("application.properties"), null);
+            } catch (Exception ex) {
+              System.exit(-1);
+            }
         }
-
+        return properties;
     }
-
 }
-*/

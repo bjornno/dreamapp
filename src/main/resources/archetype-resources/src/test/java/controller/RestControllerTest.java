@@ -1,21 +1,22 @@
 package ${groupId}.controller;
 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.junit.Assert;
+import org.junit.Test;
+import org.mortbay.jetty.Connector;
+import org.mortbay.jetty.Server;
+import org.mortbay.jetty.plus.naming.EnvEntry;
+import org.mortbay.jetty.security.SslSocketConnector;
+import org.springframework.web.client.RestTemplate;
+
 import javax.net.ssl.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URI;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.Connector;
-import org.mortbay.jetty.security.SslSocketConnector;
-import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
-
-import java.net.URI;
 
 public class RestControllerTest {
     @Test
@@ -44,6 +45,13 @@ public class RestControllerTest {
     }
 
     private int startJetty() throws Exception {
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+        basicDataSource.setUrl("jdbc:hsqldb:mem:rest");
+        basicDataSource.setUsername("sa");
+        basicDataSource.setPassword("");
+
+        new EnvEntry("jdbc/Ds", basicDataSource);
         Server server = new org.mortbay.jetty.Server(0);
         server.addHandler(
                 new org.mortbay.jetty.webapp.WebAppContext("src/main/webapp", "/"));
