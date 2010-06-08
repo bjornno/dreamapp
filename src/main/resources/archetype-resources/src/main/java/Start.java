@@ -1,4 +1,3 @@
-package ${groupId};
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.mortbay.jetty.Connector;
