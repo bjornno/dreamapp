@@ -261,6 +261,7 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>foo</stopKey>
                     <stopPort>9999</stopPort>
+                    <jettyEnvXml>src/test/resources/jetty-env.xml</jettyEnvXml>
                 </configuration>
                 <executions>
                     <execution>

@@ -19,5 +19,6 @@
    </testSources>
    <testResources>
        <resource>src/test/resources/createTestKeys.sh</resource>
+       <resource>src/test/resources/jetty-env.xml</resource>
    </testResources>
 </archetype>
