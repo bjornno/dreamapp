@@ -24,25 +24,12 @@ public class ApplicationLauncher {
         try {
             new EnvEntry("jdbc/Ds", basicDataSource);
         } catch (NamingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.exit(-1);
         }
         Server server = new Server();
-        if (args.length > 1 && "SSL".equals(args[1])) {
-            SslSocketConnector sslConnector = new SslSocketConnector();
-            sslConnector.setTruststore("src/test/resources/server.truststore.jks");
-            sslConnector.setTrustPassword("123456");
-            sslConnector.setKeystore("src/test/resources/server.keystore.jks");
-            sslConnector.setKeyPassword("123456");
-            sslConnector.setPassword("123456");
-            sslConnector.setPort(8080);
-            sslConnector.setName("SslConnection");
-            sslConnector.setNeedClientAuth(true);
-            server.setConnectors(new Connector[] { sslConnector });
-        } else {
-            Connector defaultConnector = new SocketConnector();
-            defaultConnector.setPort(8080);
-            server.setConnectors(new Connector[] { defaultConnector });
-        }
+        Connector defaultConnector = new SocketConnector();
+        defaultConnector.setPort(8080);
+        server.setConnectors(new Connector[] { defaultConnector });
         server.addHandler(
                 new org.mortbay.jetty.webapp.WebAppContext("src/main/webapp", "/"));
         try {

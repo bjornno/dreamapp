@@ -316,7 +316,24 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>com.carbonfive.db-support</groupId>
+                <artifactId>db-migration-maven-plugin</artifactId>
+                <version>0.9.8</version>
+                <configuration>
+                    <url>jdbc:hsqldb:file:database</url>
+                    <username>sa</username>
+                    <password></password>
+                    <migrationsPath>src/main/resources/db/migrations</migrationsPath>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>hsqldb</groupId>
+                        <artifactId>hsqldb</artifactId>
+                        <version>1.8.0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
 
     </build>
@@ -357,4 +374,10 @@
             <url>http://repository.springsource.com/maven/bundles/snapshot</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>c5-public-repository</id>
+            <url>http://mvn.carbonfive.com/public</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

@@ -30,9 +30,8 @@ public class Start {
         BasicDataSource dataSource = new BasicDataSource();
         Properties properties = loadProperties();
         dataSource.setDriverClassName(properties.getProperty("jdbc.driver"));
-//        dataSource.setUrl("jdbc:hsqldb:mem:rest");
         dataSource.setUrl(properties.getProperty("jdbc.url"));
-          dataSource.setPassword(properties.getProperty("jdbc.password"));
+        dataSource.setPassword(properties.getProperty("jdbc.password"));
         dataSource.setUsername(properties.getProperty("jdbc.username"));
         new EnvEntry("jdbc/Ds", dataSource);
         Server server = new Server();
@@ -46,9 +45,6 @@ public class Start {
             System.exit(-1);
         }
     }
-
-
-
 
     private static Handler createWebappContextHandler() {
         WebAppContext context = new WebAppContext();
