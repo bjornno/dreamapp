@@ -34,9 +34,9 @@ public class Start {
         dataSource.setUser(properties.getProperty("jdbc.username"));
         dataSource.setPassword(properties.getProperty("jdbc.password"));
 
-        dataSource.setMinPoolSize(5);
-        dataSource.setAcquireIncrement(5);
-        dataSource.setMaxPoolSize(20);
+        dataSource.setMinPoolSize(properties.getProperty("jdbc.minPoolSize"));
+        dataSource.setAcquireIncrement(properties.getProperty("jdbc.poolIncrement"));
+        dataSource.setMaxPoolSize(properties.getProperty("jdbc.maxPoolSize"));
 
         new EnvEntry("jdbc/Ds", dataSource);
         Server server = new Server();
@@ -74,6 +74,9 @@ public class Start {
             properties.put("jdbc.url", "jdbc:hsqldb:file:database");
             properties.put("jdbc.username", "sa");
             properties.put("jdbc.password", "");
+            properties.put("jdbc.minPoolSize", "5");
+            properties.put("jdbc.poolIncrement", "5");
+            properties.put("jdbc.maxPoolSize", "20");
             try {
                 properties.store(new FileOutputStream("application.properties"), null);
             } catch (Exception ex) {
