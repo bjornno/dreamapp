@@ -74,6 +74,11 @@
             <version>1.8.0.1</version>
         </dependency>
         <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.7</version>
@@ -192,6 +197,11 @@
                             <groupId>hsqldb</groupId>
                             <artifactId>hsqldb</artifactId>
                             <version>1.8.0.1</version>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>c3p0</groupId>
+                            <artifactId>c3p0</artifactId>
+                            <version>0.9.1.2</version>
                         </artifactItem>
                         <artifactItem>
                             <groupId>commons-configuration</groupId>

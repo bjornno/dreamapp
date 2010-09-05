@@ -1,5 +1,5 @@
 
-import org.apache.commons.dbcp.BasicDataSource;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Server;
@@ -27,12 +27,17 @@ public class Start {
     private static final String WEBAPPLICATION_CONTEXT_NAME = "/";
 
     public static void main(String[] args) throws Exception {
-        BasicDataSource dataSource = new BasicDataSource();
         Properties properties = loadProperties();
-        dataSource.setDriverClassName(properties.getProperty("jdbc.driver"));
-        dataSource.setUrl(properties.getProperty("jdbc.url"));
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        dataSource.setDriverClass(properties.getProperty("jdbc.driver"));
+        dataSource.setJdbcUrl(properties.getProperty("jdbc.url"));
+        dataSource.setUser(properties.getProperty("jdbc.username"));
         dataSource.setPassword(properties.getProperty("jdbc.password"));
-        dataSource.setUsername(properties.getProperty("jdbc.username"));
+
+        dataSource.setMinPoolSize(5);
+        dataSource.setAcquireIncrement(5);
+        dataSource.setMaxPoolSize(20);
+
         new EnvEntry("jdbc/Ds", dataSource);
         Server server = new Server();
         Connector defaultConnector = new SocketConnector();
