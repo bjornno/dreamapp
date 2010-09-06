@@ -34,9 +34,9 @@ public class Start {
         dataSource.setUser(properties.getProperty("jdbc.username"));
         dataSource.setPassword(properties.getProperty("jdbc.password"));
 
-        dataSource.setMinPoolSize(properties.getProperty("jdbc.minPoolSize"));
-        dataSource.setAcquireIncrement(properties.getProperty("jdbc.poolIncrement"));
-        dataSource.setMaxPoolSize(properties.getProperty("jdbc.maxPoolSize"));
+        dataSource.setMinPoolSize(Integer.parseInt(properties.getProperty("jdbc.minPoolSize")));
+        dataSource.setAcquireIncrement(Integer.parseInt(properties.getProperty("jdbc.poolIncrement")));
+        dataSource.setMaxPoolSize(Integer.parseInt(properties.getProperty("jdbc.maxPoolSize")));
 
         new EnvEntry("jdbc/Ds", dataSource);
         Server server = new Server();
