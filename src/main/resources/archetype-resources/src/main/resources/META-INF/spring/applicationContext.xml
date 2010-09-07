@@ -14,8 +14,9 @@
         <property name="jndiName" value="jdbc/Ds"/>
     </bean>
 
-    <jdbc:initialize-database data-source="dataSource" enabled="true">
+    <jdbc:initialize-database data-source="dataSource" enabled="${db.provision}">
         <jdbc:script location="classpath:db/migrations/*.sql"/>
+        <jdbc:script location="classpath:db/environments/${db.environment}-properties.sql"/>
     </jdbc:initialize-database>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -39,7 +40,12 @@
                 </constructor-arg>
             </bean>
         </property>
-        <property name="location" value="file:application.properties"/>
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+                <value>file:application.properties</value>
+            </list>
+        </property>
         <property name="ignoreResourceNotFound" value="true"/>
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
     </bean>

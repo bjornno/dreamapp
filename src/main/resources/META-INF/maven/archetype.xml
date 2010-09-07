@@ -8,6 +8,8 @@
         <resource>src/main/resources/META-INF/spring/applicationContext.xml</resource>
         <resource>src/main/resources/application.properties</resource>
         <resource>src/main/resources/db/migrations/initial.sql</resource>
+        <resource>src/main/resources/db/environments/prod-properties.sql</resource>
+        <resource>src/main/resources/db/environments/test-properties.sql</resource>
         <resource>src/main/webapp/WEB-INF/web.xml</resource>
         <resource>src/main/webapp/index.html</resource>
     </resources>

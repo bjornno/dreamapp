@@ -77,10 +77,12 @@ public class Start {
             properties.put("jdbc.minPoolSize", "5");
             properties.put("jdbc.poolIncrement", "5");
             properties.put("jdbc.maxPoolSize", "20");
+            properties.put("db.provision", "true");
+            properties.put("db.environment", "test");
             try {
                 properties.store(new FileOutputStream("application.properties"), null);
             } catch (Exception ex) {
-              System.exit(-1);
+                System.exit(-1);
             }
         }
         return properties;
